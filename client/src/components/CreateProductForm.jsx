@@ -4,7 +4,7 @@ function CreateProductForm({ onSubmitProduct }) {
   const [productInfo, setProductInfo] = useState({
     name: "",
     image: "",
-    price: null,
+    price: "",
     description: "",
   });
 
@@ -21,6 +21,12 @@ function CreateProductForm({ onSubmitProduct }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmitProduct(productInfo); // Send data to CreateProductPage
+    setProductInfo({
+    name: "",
+    image: "",
+    price: null,
+    description: "",
+    })
   };
 
   return (

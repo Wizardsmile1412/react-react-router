@@ -13,13 +13,29 @@ function HomePage() {
     try {
       setIsError(false);
       setIsLoading(true);
+
       const results = await axios("http://localhost:4001/products");
       setProducts(results.data.data);
+
       setIsLoading(false);
     } catch (error) {
       setIsError(true);
+      setIsLoading(false);
     }
   };
+
+  const deleteProduct = async (id) => {
+    try {
+      setIsError(false)
+
+      await axios.delete(`http://localhost:4001/products/${id}`)
+
+      getProducts();
+    } catch(error){
+      setIsError(true);
+      console.error("Failed to delete product:", error);
+    }
+  }
 
   useEffect(() => {
     getProducts();
@@ -34,7 +50,7 @@ function HomePage() {
       <div className="product-list">
         {products.map((product) => {
           return (
-            <div className="product">
+            <div className="product" key={product.id}>
               <div className="product-preview">
                 <img
                   src="https://via.placeholder.com/250/250"
@@ -53,7 +69,7 @@ function HomePage() {
                 </div>
               </div>
 
-              <button className="delete-button">x</button>
+              <button className="delete-button" onClick={()=>deleteProduct(product.id)}>x</button>
             </div>
           );
         })}

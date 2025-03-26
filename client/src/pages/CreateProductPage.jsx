@@ -6,6 +6,7 @@ import { useState } from "react";
 function CreateProductPage() {
   const [isError, setIsError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  
   const navigate = useNavigate();
 
   const createProduct = async (productInfo) => {
