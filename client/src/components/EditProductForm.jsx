@@ -1,60 +1,48 @@
-function EditProductForm() {
+import React from "react";
+
+function EditProductForm({ formData, handleChange, handleSubmit }) {
   return (
-    <form className="product-form">
-      <h1>Edit Product Form</h1>
-      <div className="input-container">
-        <label>
-          Name
-          <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Enter name here"
-            onChange={() => {}}
-          />
-        </label>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Product Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name} // Pre-fill with existing data
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div className="input-container">
-        <label>
-          Image Url
-          <input
-            id="image"
-            name="image"
-            type="text"
-            placeholder="Enter image url here"
-            onChange={() => {}}
-          />
-        </label>
+      <div>
+        <label>Product Price:</label>
+        <input
+          type="number"
+          name="price"
+          value={formData.price} // Pre-fill with existing data
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div className="input-container">
-        <label>
-          Price
-          <input
-            id="price"
-            name="price"
-            type="number"
-            placeholder="Enter price here"
-            onChange={() => {}}
-          />
-        </label>
+      <div>
+        <label>Product Description:</label>
+        <textarea
+          name="description"
+          value={formData.description} // Pre-fill with existing data
+          onChange={handleChange}
+          required
+        ></textarea>
       </div>
-      <div className="input-container">
-        <label>
-          Description
-          <textarea
-            id="description"
-            name="description"
-            type="text"
-            placeholder="Enter description here"
-            onChange={() => {}}
-            rows={4}
-            cols={30}
-          />
-        </label>
+      <div>
+        <label>Image URL:</label>
+        <input
+          type="text"
+          name="imageUrl"
+          value={formData.imageUrl} // Pre-fill with existing data
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div className="form-actions">
-        <button type="submit">Update</button>
-      </div>
+      <button type="submit">Submit</button>
     </form>
   );
 }

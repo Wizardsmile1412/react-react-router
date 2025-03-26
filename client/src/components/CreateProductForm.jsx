@@ -1,60 +1,48 @@
-function CreateProductForm() {
+import React from "react";
+
+function CreateProductForm({ formData, handleChange, handleSubmit }) {
   return (
-    <form className="product-form">
-      <h1>Create Product Form</h1>
-      <div className="input-container">
-        <label>
-          Name
-          <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Enter name here"
-            onChange={() => {}}
-          />
-        </label>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Product Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div className="input-container">
-        <label>
-          Image Url
-          <input
-            id="image"
-            name="image"
-            type="text"
-            placeholder="Enter image url here"
-            onChange={() => {}}
-          />
-        </label>
+      <div>
+        <label>Product Price:</label>
+        <input
+          type="number"
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div className="input-container">
-        <label>
-          Price
-          <input
-            id="price"
-            name="price"
-            type="number"
-            placeholder="Enter price here"
-            onChange={() => {}}
-          />
-        </label>
+      <div>
+        <label>Product Description:</label>
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          required
+        ></textarea>
       </div>
-      <div className="input-container">
-        <label>
-          Description
-          <textarea
-            id="description"
-            name="description"
-            type="text"
-            placeholder="Enter description here"
-            onChange={() => {}}
-            rows={4}
-            cols={30}
-          />
-        </label>
+      <div>
+        <label>Image URL:</label>
+        <input
+          type="text"
+          name="imageUrl"
+          value={formData.imageUrl}
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div className="form-actions">
-        <button type="submit">Create</button>
-      </div>
+      <button type="submit">Create Product</button>
     </form>
   );
 }
