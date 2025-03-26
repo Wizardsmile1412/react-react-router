@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-route
 import HomePage from "./pages/HomePage";
 import CreateProductPage from "./pages/CreateProductPage"
 import ViewProductPage from "./pages/ViewProductPage"
+import EditProductPage from "./pages/EditProductPage"
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/" element={<HomePage />}/>
       <Route path="/create" element={<CreateProductPage />}/>
       <Route path="/view/:productId" element={<ViewProductPage />}/>
+      <Route path="/edit/:productId" element={<EditProductPage />}/>
     </Routes>
     </BrowserRouter>
   );
