@@ -34,6 +34,15 @@ function HomePage() {
     navigate(`/product/edit/${productId}`); // Navigate to Edit Product Page with productId
   };
 
+  const handleDeleteProduct = async (productId) => {
+    try {
+      await axios.delete(`http://localhost:4001/products/${productId}`); // Delete product from server
+      setProducts(products.filter((product) => product.id !== productId)); // Update state to remove deleted product
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
   return (
     <div>
       <div className="app-wrapper">
@@ -66,7 +75,8 @@ function HomePage() {
           </div>
         </div>
 
-        <button className="delete-button">x</button>
+        <button className="delete-button"
+                onClick={() => handleDeleteProduct(product.id)}>x</button>
       </div>
     );
   })}

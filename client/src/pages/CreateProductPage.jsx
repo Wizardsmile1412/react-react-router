@@ -14,7 +14,11 @@ function CreateProductPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (name === "price" && value < 0) {
+      setFormData({ ...formData, [name]: 0 }); 
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
