@@ -48,7 +48,7 @@ function HomePage() {
                 <h2>Product price: {product.price}</h2>
                 <p>Product description: {product.description} </p>
                 <div className="product-actions">
-                  <button className="view-button">View</button>
+                  <button className="view-button" onClick={()=>navigate(`/view/${product.id}`)}>View</button>
                   <button className="edit-button">Edit</button>
                 </div>
               </div>
