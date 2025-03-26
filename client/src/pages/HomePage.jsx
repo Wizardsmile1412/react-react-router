@@ -25,11 +25,14 @@ const buttonDelete = async (key) => {
   try{
 
     const results = await axios.delete(`http://localhost:4001/products/${key}`);
+    
     const newProducts = products.filter((product) => product.id !== key)
     setProducts(newProducts)
+    getProducts()
 
   }
-  catch(err){}
+  catch(err)
+  {}
 }
 
 
