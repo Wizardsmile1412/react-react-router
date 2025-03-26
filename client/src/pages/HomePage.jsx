@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const [products, setProducts] = useState([]);
   const [isError, setIsError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+
+  const navigate = useNavigate();
 
   const getProducts = async () => {
     try {
@@ -21,11 +24,12 @@ function HomePage() {
   useEffect(() => {
     getProducts();
   }, []);
+
   return (
     <div>
       <div className="app-wrapper">
         <h1 className="app-title">Products</h1>
-        <button>Create Product</button>
+        <button onClick={()=>navigate("/create")}>Create Product</button>
       </div>
       <div className="product-list">
         {products.map((product) => {

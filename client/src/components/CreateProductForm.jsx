@@ -1,6 +1,30 @@
-function CreateProductForm() {
+import { useState } from "react";
+
+function CreateProductForm({ onSubmitProduct }) {
+  const [productInfo, setProductInfo] = useState({
+    name: "",
+    image: "",
+    price: null,
+    description: "",
+  });
+
+  // Handle input change
+  const handleProductInfo = (e) => {
+    const {name, value} = e.target;
+    setProductInfo((prevdata)=> ({
+      ...prevdata,
+      [name]: value,
+    }))
+  }
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmitProduct(productInfo); // Send data to CreateProductPage
+  };
+
   return (
-    <form className="product-form">
+    <form className="product-form" onSubmit={handleSubmit}>
       <h1>Create Product Form</h1>
       <div className="input-container">
         <label>
@@ -10,7 +34,8 @@ function CreateProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={() => {}}
+            value={productInfo.name}
+            onChange={handleProductInfo}
           />
         </label>
       </div>
@@ -22,7 +47,8 @@ function CreateProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={() => {}}
+            value={productInfo.image}
+            onChange={handleProductInfo}
           />
         </label>
       </div>
@@ -34,7 +60,8 @@ function CreateProductForm() {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={() => {}}
+            value={productInfo.price}
+            onChange={handleProductInfo}
           />
         </label>
       </div>
@@ -46,7 +73,8 @@ function CreateProductForm() {
             name="description"
             type="text"
             placeholder="Enter description here"
-            onChange={() => {}}
+            value={productInfo.description}
+            onChange={handleProductInfo}
             rows={4}
             cols={30}
           />
